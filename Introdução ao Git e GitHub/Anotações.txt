@@ -1,2 +1,126 @@
 Link do Git para download: https://git-scm.com/downloads
-O Git Bash � um terminal extendido para otimizar o uso do Git.
+O Git Bash é um terminal extendido para otimizar o uso do Git.
+
+
+Aula 1 - Introd ao Git
+-Git:
+É um software de versionamento de código. 
+Serve para criar e monitorar diferentes versões dum mesmo código
+
+-GitHub:
+Repositório online para guardar nosso código.
+Ele não é o único
+Funciona também como rede social
+
+Benefícios de aprender Git e GitHub
+1-Controle de versão
+2-Armazenamento em nuvem
+3-Trabalho em equipe
+4-Melhorar seu código
+5-Reconhecimento
+
+Aula 2 - Instalação do GIT
+
+Aula 3 - Entendendo como o Git funciona 
+
+Parte 1
+*SHA1
+É um algoritmo de encriptação (segurança) com 40 caracteres.
+
+*Usando Git bash
+-Ele abre, por padrão, na pasta Git bash
+-Use direito do mouse. Clique em Git Bash Here. O git vai abrir na pasta onde estou
+
+Usando o sha1: openssl sha1 +nome do arquivo. Depois ENTER
+É uma forma garantir e identificar que o arquivo sofreu alguma alteração
+
+Parte 2 - Objetos internos do Git
+*Objetos fundamentais
+-Blob (bolha) = Objeto do Git q/ arquiva meta-dados 
+Guarda o sha1 do arquivo e só
+Estrutura de uma Blob: ‘blob tamanho\0nome do arquivo
+
+-Tree (árvore) = armazenam Bloobs
+Monta a estrutura de onde estão os arquivos. E gera um sha1 próprio
+Podem apontar pra Blobs ou outras árvores.
+
+Estrutura de uma Tree: Tree tamanho\0blob nome do arquivo
+Função da Tree: apontar para diretórios que contêm arquivos
+
+-Commit
+Aponta para uma:
+tree
+Parente = commit antecessor
+Autor = Quem fez
+Mensagem: Para dar significado ao commit
+Timestamp: Mostra a data e hora da criação do objeto
+
+O commit também possui um sha1 próprio.
+Se houver alteração da Blob, altera o sha1 da árvore e do commit
+
+Git é um sistema distribuido e seguro devido a alta encriptação!
+
+
+Parte 3 - Chaves SSH e Tokens
+São formas de identificação segura
+*Chave SSH - Forma segura de criar conexão entre 2 máquinas
+Como criar uma chave SSH:
+Usar o Git bash. Seguir esses passos
+1-Digitar: ssh-keygen -t ed25519 -C “meu email”
+
+*Token
+Gerado no GitHub e guardado no meu PC.
+Toda vez que eu fizer um commit o Git vai pedir meu usuário e senha, mas a senha será o Token.
+Quando se tem um Token de acesso pessoal devemos clonar um repositório via https e usar o Token no Git
+
+
+Aula 4 - Primeiros comandos no Git 
+Todo comando do Git começa com git + nome do comando
+git init - iniciar um repositório. Cria uma pasta oculta onde o git versiona
+ls -a - Comando pra mostrar arquivos ocultos
+git add - Move os arquivos para a Staging Area 
+git add * - adiciona todas as modificações do repositório local para a Staging Area
+git commit - Muda os arquivos de Stage para Unmodified e coloca no Local Repository
+
+
+Aula 5 - Ciclo de vida dos arquivos Git
+
+Unmodified - Arquivo n/ modificado 
+Modified - Arquivo modificado
+Staged - Arquivo se preparando para um Commit
+O Commit retorna o arquivo para Unmodified, reiniciando o ciclo
+
+Novos comandos:
+git status = ver o status atual do arquivo
+git commit -m “msg” = envelopar os arquivos da Staging Area em uma mensagem (p/ dar sentido) e dar commit.
+
+
+Aula 6 - Trabalhando com o GitHub
+Ele também é uma rede social, onde posso seguir e ver o que outras pessoas estão fazendo.
+
+*Criando um repositório:
+1-Vá em “your repository”
+2-Clicar em “new”
+
+- Os arquivos README fala sobre o que é o repositório
+
+*Movendo repositórios locais para o GitHub
+1-Comando: git remote add origin + link do repositório GitHub
+2-Comando: git remote -v
+3-Comando git push origin master para empurrar o código do repositório local para o remoto
+
+Ou: git push origin main - Usar caso já existir o repositório no GitHub precisar adicionar alterações feitas no meu PC.
+
+
+Aula 7 - Como os conflitos acontecem no GitHub e como resolvê-los
+Como os conflitos acontecem: quando ocorre edições, por pessoas diferentes, na mesma linha.
+1- git pull origin master = Puxar uma alteração do mesmo código (feito por outra pessoa) p/ o meu git
+2- Abrir o arquivo e fazer as alterações devidas
+3- Fazer “git add *” e, depois, git commit -m “msg”
+4- Fazer “git push origin master
+
+*Como baixar um repositório do GitHub para o meu repositório local:
+1-Vá até o usuário do repositório desejado e clique em “repositories”
+2-Vá ao repositório desejado e clique em “code” e copie o link
+3-Vá ao GitBash e digite: git clone, cole o link copiado e dê ENTER
+
